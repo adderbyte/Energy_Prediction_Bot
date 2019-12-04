@@ -8,7 +8,7 @@
 Dynamic Energy use estimation.
 
       
-  1) Adaptive Fractal Analöysis
+  1) Adaptive Fractal Analysis
   2) Tree Based Algorithms
   3) Probabilistic  prediction/inference
   4) Long short time Memory
