@@ -4,7 +4,7 @@
 
 ---------------------------------------
 
-Dynamic Energy consumption estimation.
+### Dynamic Energy consumption estimation.
 
       
   1) Adaptive Fractal Analysis
@@ -16,7 +16,7 @@ Dynamic Energy consumption estimation.
   7) Kernel smoothing/ Smoothing Splines / Wavelets
 
 
-Installation Requirement:
+### Requirements:
 
 [LightGBM Installation](https://github.com/microsoft/LightGBM/tree/master/python-package)
 
