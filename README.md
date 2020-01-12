@@ -4,17 +4,6 @@
 
 ---------------------------------------
 
-Requires:
-
-[LightGBM Installation](https://github.com/microsoft/LightGBM/tree/master/python-package)
-
-[LightGBM Documentation](https://lightgbm.readthedocs.io/en/latest/Parameters.html#core-parameters)
-
-[LightGBM Paper reference](http://papers.nips.cc/paper/6907-lightgbm-a-highly-efficient-gradi)
-
-
-
-
 Dynamic Energy consumption estimation.
 
       
@@ -25,4 +14,18 @@ Dynamic Energy consumption estimation.
   5) CNN / Gramian Angular Matrix
   6) Reinforcement Learning Prediciton Bot
   7) Kernel smoothing/ Smoothing Splines / Wavelets
+
+
+Installation Requirement:
+
+[LightGBM Installation](https://github.com/microsoft/LightGBM/tree/master/python-package)
+
+[LightGBM Documentation](https://lightgbm.readthedocs.io/en/latest/Parameters.html#core-parameters)
+
+[LightGBM Paper reference](http://papers.nips.cc/paper/6907-lightgbm-a-highly-efficient-gradi)
+
+Plus other standard ML packages.
+
+
+
   
