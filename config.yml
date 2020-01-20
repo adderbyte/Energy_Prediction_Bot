@@ -1,0 +1,39 @@
+rawdatapath:
+    TrainDir: Dataset/trainData/
+    TargetDir: Dataset/target/
+    trainDatasetName: meterOneTrainData.csv
+    testDatasetName: tester
+    
+
+# the first version is cleanedDataV1. If a new cleaned data is entered then a 
+# new documentation should be entered here 
+cleanedconfig:
+    cleanedDataV1 : 
+        version: V1
+        cleanedDir: Dataset/trainData/cleaned/
+        cleanedName: cleanedDataV1.csv
+        metadata : 'zeros have been  removed from the data set. Forward filling for air and dew temperature.'
+        datasize: 4182440
+        NumberOfZerosMeterReadings: 656504
+        datasizeNonZeros: 3525936
+        FeatureSize: 32 
+        trainFeatureSize: 31
+        targetfeatureSize: 1
+        targetName : 'meter_reading'
+        validationSplit: 1000
+        TensorflowDataFlowConfig:
+            tfprocess: True
+            tfcleanTrain: tftrains.csv
+            tfcleanValidate: tfvals.csv
+            NumberOfCategoricalFeatures: 3
+            categoricalFeatureToUse: 3
+            CategoricalFeature:
+                                - 'month_day_hour'
+                                - 'pry_use'
+                                - 'site_id'
+
+# each person can create a new id to save their model. Change myname. 
+savedModel:
+   myname:
+         modelName: tfAPIKeras.ckpt
+         Dir: models/savedModels/
