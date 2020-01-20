@@ -12,7 +12,7 @@ cleanedconfig:
         version: V1
         cleanedDir: Dataset/trainData/cleaned/
         cleanedName: cleanedDataV1.csv
-        metadata : 'zeros have been  removed from the data set. Forward filling for air and dew temperature.'
+        metadata : 'For meter1. zeros have been  removed from the data set. Forward filling for air and dew temperature.'
         datasize: 4182440
         NumberOfZerosMeterReadings: 656504
         datasizeNonZeros: 3525936
@@ -22,7 +22,7 @@ cleanedconfig:
         targetName : 'meter_reading'
         validationSplit: 1000
         TensorflowDataFlowConfig:
-            tfprocess: True
+            tfprocess: False
             tfcleanTrain: tftrains.csv
             tfcleanValidate: tfvals.csv
             NumberOfCategoricalFeatures: 3
@@ -36,4 +36,12 @@ cleanedconfig:
 savedModel:
    myname:
          modelName: tfAPIKeras.ckpt
-         Dir: models/savedModels/
+         Dir: savedModels/tfAPIKeras/
+         Dir2: savedModels/tfAPINormalized/
+         modelName2 : tfAPINormalized.ckpt
+         Dir3: savedModels/CombinedLinear/
+         Dir4: savedModels/lightgbm/
+         modelName4 : lightgbm.txt
+         Dir5: savedModels/lstmModel/
+         modelName5 : lstmModel.cpt
+         
