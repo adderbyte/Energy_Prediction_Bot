@@ -1,3 +1,6 @@
+# the pipeline is to have the raw data here and clean it
+# then move it to cleaned config
+# the rAW data are from the notebooks cleaning_Preproceeesing folder
 rawdatapath:
     TrainDir: Dataset/trainData/
     TargetDir: Dataset/target/
