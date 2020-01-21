@@ -2,6 +2,7 @@ rawdatapath:
     TrainDir: Dataset/trainData/
     TargetDir: Dataset/target/
     trainDatasetName: meterOneTrainData.csv
+    trainDatasetName2: meterZeroTrainData.feather
     testDatasetName: tester
     
 
@@ -22,14 +23,37 @@ cleanedconfig:
         targetName : 'meter_reading'
         validationSplit: 1000
         TensorflowDataFlowConfig:
-            tfprocess: False
+            tfprocess: True
             tfcleanTrain: tftrains.csv
             tfcleanValidate: tfvals.csv
             NumberOfCategoricalFeatures: 3
             categoricalFeatureToUse: 3
             CategoricalFeature:
                                 - 'month_day_hour'
-                                - 'pry_use'
+                                - 'primary_use'
+                                - 'site_id'
+    cleanedDataV2 : 
+        version: V2
+        cleanedDir: Dataset/trainData/cleaned/
+        cleanedName: cleanedDataV2.feather
+        metadata : 'For meter 0 (elecricity). zeros have been  removed from the data set. Forward filling for air and dew temperature.'
+        datasize: 12060910
+        NumberOfZerosMeterReadings: 530169
+        datasizeNonZeros: 11530741
+        FeatureSize: 40 
+        trainFeatureSize: 39
+        targetfeatureSize: 1
+        targetName : 'meter_reading'
+        validationSplit: 2000
+        TensorflowDataFlowConfig:
+            tfprocess: True
+            tfcleanTrain: tftrainZero.csv
+            tfcleanValidate: tfvalsZero.csv
+            NumberOfCategoricalFeatures: 3
+            categoricalFeatureToUse: 3
+            CategoricalFeature:
+                                - 'month_day_hour'
+                                - 'primary_use'
                                 - 'site_id'
 
 # each person can create a new id to save their model. Change myname. 
@@ -43,5 +67,15 @@ savedModel:
          Dir4: savedModels/lightgbm/
          modelName4 : lightgbm.txt
          Dir5: savedModels/lstmModel/
-         modelName5 : lstmModel.cpt
+         modelName5 : lstmModel.ckpt
+   myname2:
+         modelName: tfAPIKeras.ckpt
+         Dir: savedModels/tfAPIKeras2/
+         Dir2: savedModels/tfAPINormalized2/
+         modelName2 : tfAPINormalized.ckpt
+         Dir3: savedModels/CombinedLinear2/
+         Dir4: savedModels/lightgbm2/
+         modelName4 : lightgbm.txt
+         Dir5: savedModels/lstmModel2/
+         modelName5 : lstmModel.ckpt
          
