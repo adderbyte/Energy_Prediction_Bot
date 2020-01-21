@@ -3,11 +3,15 @@
 # the rAW data are from the notebooks cleaning_Preproceeesing folder
 rawdatapath:
     TrainDir: Dataset/trainData/
-    TargetDir: Dataset/target/
     trainDatasetName: meterOneTrainData.csv
     trainDatasetName2: meterZeroTrainData.feather
-    testDatasetName: tester
     
+
+cleanedtest:
+      TargetDir: Dataset/testData/
+      testDatasetName: testZero.csv
+      testFeatureSet: testZero.feather
+      LSTMtestFeatureSet: lstmtestZero.npy
 
 # the first version is cleanedDataV1. If a new cleaned data is entered then a 
 # new documentation should be entered here 
