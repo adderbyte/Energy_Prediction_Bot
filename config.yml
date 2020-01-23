@@ -11,6 +11,7 @@ cleanedtest:
       TargetDir: Dataset/testData/
       testDatasetName: testZero.csv
       testFeatureSet: testZero.feather
+      testData : testZeroData.csv
       LSTMtestFeatureSet: lstmtestZero.npy
 
 # the first version is cleanedDataV1. If a new cleaned data is entered then a 
