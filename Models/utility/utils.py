@@ -28,16 +28,20 @@ def plot_meter(train, leak, start=0, n=100, bn=10,n_plots=5):
             break
    
 
-def tfdatabuilder(cleanedpath,cleandataName,trainName, validateName, validation_split ):
+def tfdatabuilder(cleanedpath,cleandataName,trainName, validateName, validation_split,test=False ):
     
     # get data set
-    train_test = pd.read_csv(cleanedpath +  cleandataName )
-    cleandataName# set index to timestamp
-    train_test.set_index('timestamp',inplace=True);
-    # del colum unnmaed
-    #del train['Unnamed: 0'];
-    # get column names
+    if cleandataName.endswith('feather'):
+        train_test = pd.read_feather(cleanedpath +  cleandataName )
+    else:
+        train_test = pd.read_csv(cleanedpath +  cleandataName )
+    
     #print(train_test.columns)
+    # set train index
+    train_test.set_index('timestamp',inplace=True);
+    # get column names
+    
+    if test: del train_test['index']
     col_names = list(train_test.columns)#[1:]
     print(col_names)
     # save the data types 
@@ -54,18 +58,41 @@ def tfdatabuilder(cleanedpath,cleandataName,trainName, validateName, validation_
     
     print(data_types)
     
-    # separate train and validation
-    test = train_test.tail(validation_split).copy(deep=True)
-    train_= train_test.shape[0]-test.shape[0] # train partition
-    train = train_test[:train_].copy(deep=True)
+    if not test:
     
-    # savedata
-    train.to_csv(cleanedpath + trainName,index=False,header=None)
-    test.to_csv(cleanedpath + validateName,index=False,header=None)
-    print('====================================')
-    print('Done')
+        # separate train and validation
+        test = train_test.tail(validation_split).copy(deep=True)
+        train_= train_test.shape[0]-test.shape[0] # train partition
+        train = train_test[:train_].copy(deep=True)
+
+        # savedata
+        train.to_csv(cleanedpath + trainName,index=False)
+        test.to_csv(cleanedpath + validateName,index=False)
+        print('==========***train option**=========================')
+        print('Done')
+
+        return train.index.values,test.index.values,data_types, col_names
+    else:
+        
+        train_test.to_csv(cleanedpath + trainName,index=False)
+        print('=====***test option ***================')
+        print('Done')
+        return data_types, col_names
+  
+def tfpreprocess(train):
     
-    return train.index.values,test.index.values,data_types, col_names
+    data_types = list(train.dtypes)#[1:]
+    # convert the data types to 
+    # tensorflow data types 
+    for i,j in enumerate(data_types):
+        j = str(j) # convertr from numpy dtype to str
+        #print(j)
+        if j == 'float64':
+            data_types[i] = tf.float64
+        else:
+            data_types[i]  = tf.int32
+    col_names = list(train.columns)#[1:]
+    return data_types,col_names
     
     
     
