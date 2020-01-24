@@ -4,16 +4,16 @@ import os
 import pandas as pd
 import tensorflow as tf
 
-def plot_meter(train, leak, start=0, n=100, bn=10,n_plots=5):
+def plot_meter(train, leak, start=0, n=200, bn=10):
     '''
     plot data for building meter readingss
     
     '''
-    count = 0
+    assert bn < leak.building_id.nunique();
     for bid in leak.building_id.unique()[:bn]:    
         tr = train[train.building_id == bid]
         lk = leak[leak.building_id == bid]
-        count +=1
+        
         #for m in lk.meter.unique():
         #    plt.figure(figsize=[10,2])
         #    trm = tr[tr.meter == m]
@@ -24,8 +24,7 @@ def plot_meter(train, leak, start=0, n=100, bn=10,n_plots=5):
         plt.title('bid:{}, meter:{}'.format(bid, 0))
         plt.legend()
         plt.show()
-        if count > n_plots:
-            break
+        
    
 
 def tfdatabuilder(cleanedpath,cleandataName,trainName, validateName, validation_split,test=False ):
