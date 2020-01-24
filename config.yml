@@ -31,7 +31,7 @@ cleanedconfig:
         targetName : 'meter_reading'
         validationSplit: 1000
         TensorflowDataFlowConfig:
-            tfprocess: True
+            tfprocess: False
             tfcleanTrain: tftrains.csv
             tfcleanValidate: tfvals.csv
             NumberOfCategoricalFeatures: 3
@@ -54,7 +54,7 @@ cleanedconfig:
         targetName : 'meter_reading'
         validationSplit: 2000
         TensorflowDataFlowConfig:
-            tfprocess: True
+            tfprocess: False
             tfcleanTrain: tftrainZero.csv
             tfcleanValidate: tfvalsZero.csv
             NumberOfCategoricalFeatures: 3
