@@ -8,7 +8,7 @@
 
       
   1) Adaptive Fractal Analysis
-  2) Tree Based Algorithms
+  2) Tree Based Algorithms/lightgbm
   3) Probabilistic  prediction/inference
   4) Long short time Memory
   5) CNN / Gramian Angular Matrix
